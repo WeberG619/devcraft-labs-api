@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
     const emailSentAt = new Date().toISOString()
     
     // Calculate reminder dates
-    const reminderDates = reminder_schedule.map(days => {
+    const reminderDates = reminder_schedule.map((days: number) => {
       const date = new Date()
       date.setDate(date.getDate() + days)
       return date.toISOString()

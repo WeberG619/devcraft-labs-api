@@ -52,16 +52,16 @@ export default function APIHomePage() {
         <div className="bg-white p-8 rounded-lg shadow-md mb-8">
           <h2 className="text-2xl font-semibold mb-4">Quick Start</h2>
           <div className="bg-gray-100 p-4 rounded-lg mb-4">
-            <code className="text-sm">
-              curl -X POST https://api.devcraft-labs.com/v1/invoices/generate \<br/>
-              &nbsp;&nbsp;-H "Authorization: Bearer YOUR_API_KEY" \<br/>
-              &nbsp;&nbsp;-H "Content-Type: application/json" \<br/>
-              &nbsp;&nbsp;-d '{"client_name": "Test Client", "amount": 100.00}'
-            </code>
+            <pre className="text-sm whitespace-pre-wrap">
+{`curl -X POST https://api.devcraft-labs.com/v1/invoices/generate \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{"client_name": "Test Client", "amount": 100.00}'`}
+            </pre>
           </div>
           <p className="text-gray-600">
-            All API endpoints require authentication using API keys. Get your API key from the 
-            <a href="https://devcraft-labs.com/docs" className="text-blue-600 hover:underline ml-1">
+            All API endpoints require authentication using API keys. Get your API key from the{' '}
+            <a href="https://devcraft-labs.com/docs" className="text-blue-600 hover:underline">
               documentation
             </a>.
           </p>
@@ -70,21 +70,29 @@ export default function APIHomePage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
           <div>
             <h3 className="font-semibold text-gray-900 mb-2">Rate Limits</h3>
-            <p className="text-sm text-gray-600">Free: 100/hr<br/>Pro: 1,000/hr<br/>Enterprise: 10,000/hr</p>
+            <div className="text-sm text-gray-600">
+              <div>Free: 100/hr</div>
+              <div>Pro: 1,000/hr</div>
+              <div>Enterprise: 10,000/hr</div>
+            </div>
           </div>
           <div>
             <h3 className="font-semibold text-gray-900 mb-2">Uptime SLA</h3>
-            <p className="text-sm text-gray-600">99.9% uptime<br/>Enterprise support<br/>24/7 monitoring</p>
+            <div className="text-sm text-gray-600">
+              <div>99.9% uptime</div>
+              <div>Enterprise support</div>
+              <div>24/7 monitoring</div>
+            </div>
           </div>
           <div>
             <h3 className="font-semibold text-gray-900 mb-2">Support</h3>
-            <p className="text-sm text-gray-600">
-              <a href="mailto:support@devcraft-labs.com" className="text-blue-600 hover:underline">
+            <div className="text-sm text-gray-600">
+              <a href="mailto:support@devcraft-labs.com" className="text-blue-600 hover:underline block">
                 support@devcraft-labs.com
-              </a><br/>
-              Documentation<br/>
-              Live chat
-            </p>
+              </a>
+              <div>Documentation</div>
+              <div>Live chat</div>
+            </div>
           </div>
         </div>
       </div>

@@ -89,8 +89,8 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    const template = landingPageTemplates[industry as keyof typeof landingPageTemplates]?.[goal as keyof any] || 
-                     landingPageTemplates['SaaS/Software']['Start Free Trial']
+    const defaultTemplate = landingPageTemplates['SaaS/Software']['Start Free Trial']
+    const template = (landingPageTemplates as any)[industry]?.[goal] || defaultTemplate
 
     const generatedPage = {
       elements: [
@@ -199,7 +199,7 @@ function calculateConversionRate(industry: string, goal: string): string {
     }
   }
 
-  return rates[industry as keyof typeof rates]?.[goal as keyof any] || '8.5%'
+  return (rates as any)[industry]?.[goal] || '8.5%'
 }
 
 function generateRecommendations(industry: string, goal: string): string[] {
@@ -229,7 +229,7 @@ function generateRecommendations(industry: string, goal: string): string[] {
 
   return [
     ...baseRecommendations.slice(0, 4),
-    ...(industrySpecific[industry as keyof typeof industrySpecific] || [])
+    ...((industrySpecific as any)[industry] || [])
   ]
 }
 

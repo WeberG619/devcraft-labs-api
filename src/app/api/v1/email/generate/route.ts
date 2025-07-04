@@ -103,7 +103,8 @@ function generateEmailTemplate(businessType: string, emailType: string, tone: st
     casual: 'Let\'s do this!'
   }
 
-  const intro = intros[tone as keyof typeof intros]?.[emailType as keyof any] || `Thank you for your interest in our ${businessType} services.`
+  const toneIntros = intros[tone as keyof typeof intros] || intros.professional
+  const intro = toneIntros[emailType as keyof typeof toneIntros] || `Thank you for your interest in our ${businessType} services.`
   const body = bodies[emailType as keyof typeof bodies] || `We're here to help you succeed in your ${businessType} journey.`
   const closing = closings[tone as keyof typeof closings] || 'Thank you for your time and consideration.'
 
