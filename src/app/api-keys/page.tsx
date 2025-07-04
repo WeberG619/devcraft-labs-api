@@ -142,15 +142,13 @@ export default function APIKeysPage() {
             Back to API Home
           </Link>
           <div className="flex items-center mb-6">
-            <div className="w-15 h-15 rounded-lg overflow-hidden shadow-lg mr-4">
-              <Image
-                src="/DCL-logo.png"
-                alt="DevCraft Labs Logo"
-                width={60}
-                height={60}
-                className="w-full h-full object-contain"
-              />
-            </div>
+            <Image
+              src="/DCL-logo.png"
+              alt="DevCraft Labs Logo"
+              width={68}
+              height={40}
+              className="mr-4"
+            />
             <div>
               <h1 className="text-4xl font-bold text-gray-900 mb-2">Get Your API Key</h1>
               <p className="text-xl text-gray-600">Start building with DevCraft Labs API in minutes</p>

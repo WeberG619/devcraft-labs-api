@@ -91,15 +91,12 @@ export default function APIHomePage() {
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-12">
           <div className="flex justify-center mb-6">
-            <div className="w-20 h-20 rounded-xl overflow-hidden shadow-lg">
-              <Image
-                src="/DCL-logo.png"
-                alt="DevCraft Labs Logo"
-                width={80}
-                height={80}
-                className="w-full h-full object-contain"
-              />
-            </div>
+            <Image
+              src="/DCL-logo.png"
+              alt="DevCraft Labs Logo"
+              width={81}
+              height={48}
+            />
           </div>
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
             DevCraft Labs API
