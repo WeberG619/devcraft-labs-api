@@ -51,6 +51,14 @@ export default function APIHomePage() {
       return "Create high-converting landing pages with POST /api/v1/landing/generate! Specify industry, goal, target audience, and brand colors. Get conversion optimization tips and estimated conversion rates. Try it now!"
     }
     
+    if (lowerMessage.includes('proposal') || lowerMessage.includes('business proposal')) {
+      return "Generate professional business proposals with POST /api/v1/proposals/generate! Specify businessType, projectType, clientInfo, and projectScope. Get comprehensive proposals with executive summary, timeline, investment details, and recommendations. Perfect for consulting, development, and service businesses!"
+    }
+    
+    if (lowerMessage.includes('social') || lowerMessage.includes('schedule') || lowerMessage.includes('social media')) {
+      return "Schedule and optimize social media posts with POST /api/v1/social/schedule! Supports 12+ platforms including Facebook, Instagram, Twitter, LinkedIn, TikTok. Get platform-optimized content, engagement predictions, optimal posting times, and content suggestions. Retrieve scheduled posts with GET /api/v1/social/schedule!"
+    }
+    
     if (lowerMessage.includes('rate limit') || lowerMessage.includes('pricing')) {
       return "Rate limits: Free (100/hr), Pro (1,000/hr), Enterprise (10,000/hr). All plans include 24/7 support and enterprise security. Upgrade anytime from your dashboard. No setup fees!"
     }
@@ -64,10 +72,10 @@ export default function APIHomePage() {
     }
     
     if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
-      return "Hello! Welcome to DevCraft Labs API! I can help you with endpoints, authentication, examples, and getting started. Try asking about API keys, invoice generation, email content, or landing pages. What interests you most?"
+      return "Hello! Welcome to DevCraft Labs API! I can help you with endpoints, authentication, examples, and getting started. Try asking about API keys, invoice generation, email content, landing pages, business proposals, or social media scheduling. What interests you most?"
     }
     
-    return "I can help you with API endpoints, authentication, code examples, rate limits, and getting your API key. Try asking about specific endpoints like invoices, emails, or landing pages. Or ask 'how do I get an API key?' to get started!"
+    return "I can help you with API endpoints, authentication, code examples, rate limits, and getting your API key. Try asking about specific endpoints like invoices, emails, landing pages, proposals, or social media scheduling. Or ask 'how do I get an API key?' to get started!"
   }
 
   const handleSendMessage = () => {
@@ -109,7 +117,7 @@ export default function APIHomePage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           <div className="bg-white p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-semibold mb-4">🧾 Invoice API</h2>
             <p className="text-gray-600 mb-4">Generate and send professional invoices with AI-powered descriptions</p>
@@ -140,6 +148,23 @@ export default function APIHomePage() {
             <p className="text-gray-600 mb-4">Generate blog posts, social media content, and marketing copy</p>
             <ul className="text-sm text-gray-500 space-y-1">
               <li>• POST /v1/content/generate</li>
+            </ul>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            <h2 className="text-xl font-semibold mb-4">📋 Proposal API</h2>
+            <p className="text-gray-600 mb-4">Generate professional business proposals with detailed sections</p>
+            <ul className="text-sm text-gray-500 space-y-1">
+              <li>• POST /v1/proposals/generate</li>
+            </ul>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            <h2 className="text-xl font-semibold mb-4">📱 Social Media API</h2>
+            <p className="text-gray-600 mb-4">Schedule and optimize posts across multiple social platforms</p>
+            <ul className="text-sm text-gray-500 space-y-1">
+              <li>• POST /v1/social/schedule</li>
+              <li>• GET /v1/social/schedule</li>
             </ul>
           </div>
         </div>
