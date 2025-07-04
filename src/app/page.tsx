@@ -61,7 +61,7 @@ export default function APIHomePage() {
           </div>
           <p className="text-gray-600">
             All API endpoints require authentication using API keys. Get your API key from the{' '}
-            <a href="https://devcraft-labs.com/docs" className="text-blue-600 hover:underline">
+            <a href="/docs" className="text-blue-600 hover:underline">
               documentation
             </a>.
           </p>
