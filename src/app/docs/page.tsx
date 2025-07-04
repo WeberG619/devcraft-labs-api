@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import Image from 'next/image'
 import { Copy, Play, Loader2 } from 'lucide-react'
 
 export default function DocsPage() {
@@ -47,12 +48,44 @@ export default function DocsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-4xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            API Documentation
-          </h1>
+    <div className="min-h-screen bg-gray-50">
+      {/* Navigation Header */}
+      <nav className="bg-white shadow-sm border-b">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex justify-between items-center h-16">
+            <a href="/" className="flex items-center space-x-3">
+              <Image
+                src="/DCL-logo.png"
+                alt="DevCraft Labs Logo"
+                width={54}
+                height={32}
+              />
+              <div>
+                <span className="text-xl font-semibold text-gray-900">DevCraft Labs</span>
+                <div className="text-xs text-gray-500 font-mono">API Documentation</div>
+              </div>
+            </a>
+            <div className="flex items-center space-x-6">
+              <a href="/" className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium">
+                ← Back to API
+              </a>
+              <a 
+                href="/api-keys" 
+                className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition-all text-sm"
+              >
+                Get API Key
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div className="py-12">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+              API Documentation
+            </h1>
           <p className="text-xl text-gray-600 mb-6">
             Complete guide to using the DevCraft Labs API
           </p>
@@ -229,6 +262,40 @@ export default function DocsPage() {
   "topic": "Digital Marketing",
   "tone": "professional",
   "length": "medium"
+}`}
+              </pre>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-md p-6">
+            <h3 className="text-xl font-semibold mb-4">📋 Proposal Generation</h3>
+            <p className="text-gray-600 mb-4">Create professional business proposals</p>
+            <div className="bg-gray-100 p-4 rounded-lg text-sm">
+              <pre>
+{`POST /v1/proposals/generate
+
+{
+  "businessType": "Software Development",
+  "projectType": "Website Development",
+  "clientInfo": "Acme Corp",
+  "projectScope": "Modern responsive website"
+}`}
+              </pre>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-md p-6">
+            <h3 className="text-xl font-semibold mb-4">📱 Social Media Scheduler</h3>
+            <p className="text-gray-600 mb-4">Schedule posts across multiple platforms</p>
+            <div className="bg-gray-100 p-4 rounded-lg text-sm">
+              <pre>
+{`POST /v1/social/schedule
+
+{
+  "content": "Check out our new AI tools!",
+  "platforms": ["facebook", "twitter"],
+  "scheduledTime": "2024-07-04T14:00:00Z",
+  "contentType": "text"
 }`}
               </pre>
             </div>
