@@ -99,7 +99,7 @@ export default function APIHomePage() {
             />
           </div>
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            API Service
+            DevCraft Labs API
           </h1>
           <p className="text-xl text-gray-600 mb-8">
             Professional AI tools API for businesses, developers, and AEC professionals

@@ -151,7 +151,7 @@ export default function APIKeysPage() {
               />
             </div>
             <h1 className="text-4xl font-bold text-gray-900 mb-2 text-center">Get Your API Key</h1>
-            <p className="text-xl text-gray-600 text-center">Start building with our API in minutes</p>
+            <p className="text-xl text-gray-600 text-center">Start building with DevCraft Labs API in minutes</p>
           </div>
         </div>
 
