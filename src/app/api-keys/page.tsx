@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Copy, Eye, EyeOff, Key, Shield, Zap, RefreshCw, AlertCircle, CheckCircle, ExternalLink, ArrowLeft, CreditCard, Users, Activity } from 'lucide-react'
 
 export default function APIKeysPage() {
@@ -141,18 +142,15 @@ export default function APIKeysPage() {
             Back to API Home
           </Link>
           <div className="flex items-center mb-6">
-            <svg width="60" height="60" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-4">
-              <path d="M8 6h8c8.284 0 15 6.716 15 15s-6.716 15-15 15H8V6z" fill="url(#gradient1)"/>
-              <path d="M12 12h4v2h-4v-2zm6 0h4v2h-4v-2zm-6 4h4v2h-4v-2zm6 4h4v2h-4v-2zm-6 4h4v2h-4v-2z" fill="white" opacity="0.3"/>
-              <circle cx="20" cy="20" r="3" fill="none" stroke="white" strokeWidth="1" opacity="0.4"/>
-              <path d="M20 15l1.5 1.5-1.5 1.5-1.5-1.5L20 15zm5 5l-1.5 1.5-1.5-1.5 1.5-1.5L25 20zm-5 5l-1.5-1.5 1.5-1.5 1.5 1.5L20 25zm-5-5l1.5-1.5 1.5 1.5-1.5 1.5L15 20z" fill="white" opacity="0.2"/>
-              <defs>
-                <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#1e40af"/>
-                  <stop offset="100%" stopColor="#3b82f6"/>
-                </linearGradient>
-              </defs>
-            </svg>
+            <div className="w-15 h-15 rounded-lg overflow-hidden shadow-lg mr-4">
+              <Image
+                src="/DCL-logo.png"
+                alt="DevCraft Labs Logo"
+                width={60}
+                height={60}
+                className="w-full h-full object-contain"
+              />
+            </div>
             <div>
               <h1 className="text-4xl font-bold text-gray-900 mb-2">Get Your API Key</h1>
               <p className="text-xl text-gray-600">Start building with DevCraft Labs API in minutes</p>
