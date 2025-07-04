@@ -1,4 +1,51 @@
+'use client'
+import { useState } from 'react'
+import { Copy, Play, Loader2 } from 'lucide-react'
+
 export default function DocsPage() {
+  const [apiKey, setApiKey] = useState('')
+  const [testResult, setTestResult] = useState('')
+  const [isTestinng, setIsTestinng] = useState(false)
+  const [copiedCode, setCopiedCode] = useState('')
+
+  const copyToClipboard = (code: string, id: string) => {
+    navigator.clipboard.writeText(code)
+    setCopiedCode(id)
+    setTimeout(() => setCopiedCode(''), 2000)
+  }
+
+  const testApiEndpoint = async () => {
+    if (!apiKey) {
+      setTestResult('Please enter your API key first')
+      return
+    }
+
+    setIsTestinng(true)
+    setTestResult('')
+
+    try {
+      const response = await fetch('/api/v1/invoices/generate', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          client_name: 'Test Client',
+          amount: 100.00,
+          description: 'API Test Invoice'
+        })
+      })
+
+      const data = await response.json()
+      setTestResult(JSON.stringify(data, null, 2))
+    } catch (error) {
+      setTestResult(`Error: ${error}`)
+    } finally {
+      setIsTestinng(false)
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-4xl mx-auto px-6">
@@ -6,9 +53,82 @@ export default function DocsPage() {
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
             API Documentation
           </h1>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-gray-600 mb-6">
             Complete guide to using the DevCraft Labs API
           </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a 
+              href="/api-keys" 
+              className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-lg transition-all inline-flex items-center space-x-2"
+            >
+              <span>Get Your API Key</span>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </a>
+            <a 
+              href="/" 
+              className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium px-6 py-3 rounded-lg transition-all inline-flex items-center space-x-2"
+            >
+              <span>← Back to API</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Interactive API Tester */}
+        <div className="bg-white rounded-lg shadow-md p-8 mb-8">
+          <h2 className="text-2xl font-semibold mb-6">🚀 Test the API Live</h2>
+          <p className="text-gray-600 mb-6">
+            Try our API right here! Enter your API key below to test the Invoice Generation endpoint.
+          </p>
+          
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Your API Key
+              </label>
+              <input
+                type="password"
+                value={apiKey}
+                onChange={(e) => setApiKey(e.target.value)}
+                placeholder="dcl_sk_your_api_key_here"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+              <p className="text-sm text-gray-500 mt-1">
+                Don't have an API key? <a href="/api-keys" className="text-blue-600 hover:underline">Get one free here</a>
+              </p>
+            </div>
+            
+            <button
+              onClick={testApiEndpoint}
+              disabled={isTestinng || !apiKey}
+              className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white font-medium px-6 py-3 rounded-lg transition-all flex items-center space-x-2"
+            >
+              {isTestinng ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <span>Testing...</span>
+                </>
+              ) : (
+                <>
+                  <Play className="w-4 h-4" />
+                  <span>Test Invoice API</span>
+                </>
+              )}
+            </button>
+            
+            {testResult && (
+              <div className="mt-4">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  API Response
+                </label>
+                <pre className="bg-gray-900 text-green-400 p-4 rounded-lg text-sm overflow-x-auto">
+                  {testResult}
+                </pre>
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="bg-white rounded-lg shadow-md p-8 mb-8">
