@@ -99,12 +99,19 @@ export default function APIHomePage() {
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-12">
           <div className="flex justify-center mb-6">
-            <Image
-              src="/DCL-logo.png"
-              alt="DevCraft Labs Logo"
-              width={81}
-              height={48}
-            />
+            <div className="flex items-center space-x-3">
+              <Image
+                src="/DCL-logo.png"
+                alt="DevCraft Labs"
+                width={48}
+                height={38}
+                className="w-12 h-10"
+              />
+              <div>
+                <div className="text-2xl font-bold text-gray-900">DevCraft Labs</div>
+                <div className="text-sm text-gray-500 font-mono">AI-Powered Business Tools</div>
+              </div>
+            </div>
           </div>
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
             DevCraft Labs API
@@ -176,7 +183,7 @@ export default function APIHomePage() {
               <p className="text-blue-800 text-sm">This is the API service. Visit our main website for the full platform, documentation, and business tools.</p>
             </div>
             <a 
-              href="https://devcraft-labs-nun39sfl4-weber1.vercel.app" 
+              href="https://devcraft-labs-itdcld53i-weber1.vercel.app" 
               className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
               target="_blank"
             >
